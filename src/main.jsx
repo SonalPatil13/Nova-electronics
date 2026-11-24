@@ -37,6 +37,24 @@ const products = [
     tag: 'DESK ESSENTIAL', color: 'Cloud', rating: '4.8', reviews: 112,
     image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=1000&q=85',
     description: 'A satisfying, considered typing experience. Thoughtful ergonomics meet a clean, minimal profile.'
+  },
+  {
+    id: 6, name: 'Aero Wireless Earbuds', category: 'Audio', price: 62999, oldPrice: 74999,
+    tag: 'NEW ARRIVAL', color: 'Matte White', rating: '4.8', reviews: 88,
+    image: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=1000&q=85',
+    description: 'Crystal-clear acoustics with seamless spatial audio, dual beamforming mics, and all-weather resistance.'
+  },
+  {
+    id: 7, name: 'Horizon Ultra Tablet', category: 'Accessories', price: 169999, oldPrice: 189999,
+    tag: 'TOP RATED', color: 'Space Grey', rating: '4.9', reviews: 145,
+    image: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=1000&q=85',
+    description: 'A stunning edge-to-edge display built for sketching, reading, and seamless multitasking on the go.'
+  },
+  {
+    id: 8, name: 'MagGlow Wireless Power Hub', category: 'Accessories', price: 34999, oldPrice: 42999,
+    tag: 'MUST HAVE', color: 'Obsidian', rating: '4.7', reviews: 92,
+    image: 'https://images.unsplash.com/photo-1622445262464-84b1456045b6?auto=format&fit=crop&w=1000&q=85',
+    description: 'Minimalist 3-in-1 magnetic fast-charging dock that powers your phone, watch, and earbuds together.'
   }
 ];
 
@@ -109,7 +127,7 @@ function App() {
 function Home({ navigate, addToCart }) {
   return <>
     <section className="hero">
-      <div className="hero-copy"><div className="eyebrow light"><span className="eyebrow-dot" /> THE GOOD TECH EDITION</div><h1>Make room<br />for <em>better.</em></h1><p>Thoughtfully picked technology for the way you live, work and play. No noise. Just the good stuff.</p><div className="hero-buttons"><button className="button button-light" onClick={() => navigate('Shop')}>Explore the collection <ArrowUpRight size={17} /></button><button className="text-link light-link" onClick={() => navigate('Our story')}>Why NOVA? <ArrowDownRight size={16} /></button></div><div className="hero-footnote"><span>01 — 05</span><span>LESS, BUT BETTER.</span></div></div>
+      <div className="hero-copy"><div className="eyebrow light"><span className="eyebrow-dot" /> THE GOOD TECH EDITION</div><h1>Make room<br />for <em>better.</em></h1><p>Thoughtfully picked technology for the way you live, work and play. No noise. Just the good stuff.</p><div className="hero-buttons"><button className="button button-light" onClick={() => navigate('Shop')}>Explore the collection <ArrowUpRight size={17} /></button><button className="text-link light-link" onClick={() => navigate('Our story')}>Why NOVA? <ArrowDownRight size={16} /></button></div><div className="hero-footnote"><span>01 — 08</span><span>LESS, BUT BETTER.</span></div></div>
       <div className="hero-visual"><img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=1400&q=90" alt="Curated collection of modern electronics" /><div className="hero-sticker"><Sparkles size={17} /><span>GOOD DESIGN.<br />GREAT EVERYDAY.</span></div><div className="hero-image-caption">THE EVERYDAY UPGRADE <span>↗</span></div></div>
     </section>
     <section className="trust-strip"><div><Truck /><span>Free shipping over ₹5,0000</span></div><div><ShieldCheck /><span>Quality, thoughtfully checked</span></div><div><RotateCcw /><span>Easy 7-day returns</span></div></section>
@@ -125,7 +143,7 @@ function ProductCard({ product, addToCart }) {
 
 function Shop({ filtered, category, setCategory, query, setQuery, addToCart }) {
   const categories = ['All', 'Audio', 'Wearables', 'Cameras', 'Accessories'];
-  return <section className="shop-page section"><div className="page-intro"><p className="eyebrow">THE NOVA COLLECTION</p><h1>Find your next<br /><em>favourite thing.</em></h1><p>Five carefully chosen essentials. Each one here for a reason.</p></div><div className="shop-toolbar"><div className="filters">{categories.map(c => <button key={c} onClick={() => setCategory(c)} className={category === c ? 'filter active-filter' : 'filter'}>{c}</button>)}</div><label className="shop-search"><Search size={16} /><input value={query} onChange={e => setQuery(e.target.value)} placeholder="Find something..." /></label></div><div className="product-grid shop-grid">{filtered.map(p => <ProductCard key={p.id} product={p} addToCart={addToCart} />)}</div>{filtered.length === 0 && <div className="no-results"><h3>Nothing found just yet.</h3><p>Try another search or category.</p><button className="text-link" onClick={() => { setQuery(''); setCategory('All') }}>Clear filters <ArrowRight size={16} /></button></div>}</section>;
+  return <section className="shop-page section"><div className="page-intro"><p className="eyebrow">THE NOVA COLLECTION</p><h1>Find your next<br /><em>favourite thing.</em></h1><p>Eight carefully chosen essentials. Each one here for a reason.</p></div><div className="shop-toolbar"><div className="filters">{categories.map(c => <button key={c} onClick={() => setCategory(c)} className={category === c ? 'filter active-filter' : 'filter'}>{c}</button>)}</div><label className="shop-search"><Search size={16} /><input value={query} onChange={e => setQuery(e.target.value)} placeholder="Find something..." /></label></div><div className="product-grid shop-grid">{filtered.map(p => <ProductCard key={p.id} product={p} addToCart={addToCart} />)}</div>{filtered.length === 0 && <div className="no-results"><h3>Nothing found just yet.</h3><p>Try another search or category.</p><button className="text-link" onClick={() => { setQuery(''); setCategory('All') }}>Clear filters <ArrowRight size={16} /></button></div>}</section>;
 }
 
 function Story({ navigate }) {
